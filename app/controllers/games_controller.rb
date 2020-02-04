@@ -5,7 +5,7 @@ class GamesController < ApplicationController
     end
 
     def create
-        game = Game.new
+        game = Game.new(score: 0)
     end
 
     def update 
@@ -13,7 +13,7 @@ class GamesController < ApplicationController
         render json: game
     end 
     
-    def book_params
+    def game_params
         params.require(:game).permit(:pins, :score)
     end
 end
