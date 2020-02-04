@@ -5,7 +5,8 @@ class GamesController < ApplicationController
     end
 
     def create
-        game = Game.create(game_params)
+        game = Game.create(pins: 10, score: 0, frame: 10)
+        byebug
     end
 
     def update 
