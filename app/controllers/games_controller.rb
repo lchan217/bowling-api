@@ -5,7 +5,7 @@ class GamesController < ApplicationController
     end
 
     def create
-        game = Game.new(score: 0)
+        game = Game.create(game_params)
     end
 
     def update 
@@ -14,6 +14,6 @@ class GamesController < ApplicationController
     end 
     
     def game_params
-        params.require(:game).permit(:pins, :score)
+        params.require(:game).permit(:pins, :score, :frame)
     end
 end
