@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_05_024802) do
+ActiveRecord::Schema.define(version: 2020_02_05_030249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_02_05_024802) do
     t.integer "turn"
     t.integer "spareBalls"
     t.integer "strikeBalls"
+    t.boolean "game_over", default: false
   end
 
 end
