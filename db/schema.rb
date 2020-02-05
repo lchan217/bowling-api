@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_02_05_030249) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "frame"
-    t.json "score", default: {}
+    t.json "score"
     t.integer "turn"
     t.integer "spareBalls"
     t.integer "strikeBalls"
