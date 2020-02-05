@@ -1,2 +1,6 @@
 class Game < ApplicationRecord
-end
+    # def subtract(game)
+    #     game.turn -= 1
+    #     game.save
+    # end 
+end 

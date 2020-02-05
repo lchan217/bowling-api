@@ -1,4 +1,4 @@
-class GamesController < ApplicationController
+class GameController < ApplicationController
     def index
         games = Game.all
         render json: games, status: 201
@@ -6,11 +6,14 @@ class GamesController < ApplicationController
 
     def create
         game = Game.create(game_params)
+        # game.subtract(game) 
     end
 
     def update 
-        byebug
-        game = Game.find(params[:id])
+        game = Game.last
+        # pinsRemaining = 10 - params[:_json]
+        # game.update(pins: pinsRemaining)
+        debugger
         render json: game
     end 
     
