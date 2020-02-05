@@ -2,7 +2,7 @@ class CreateGames < ActiveRecord::Migration[5.2]
   def change
     create_table :games do |t|
       t.integer :pins
-      t.integer :score
+      t.text :score
 
       t.timestamps
     end
