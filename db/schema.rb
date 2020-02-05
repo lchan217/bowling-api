@@ -17,10 +17,10 @@ ActiveRecord::Schema.define(version: 2020_02_05_030249) do
 
   create_table "games", force: :cascade do |t|
     t.integer "pins"
-    t.text "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "frame"
+    t.json "score", default: {}
     t.integer "turn"
     t.integer "spareBalls"
     t.integer "strikeBalls"
