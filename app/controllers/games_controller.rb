@@ -5,15 +5,16 @@ class GamesController < ApplicationController
     end
 
     def create
-        game = Game.create(pins: 10, score: {}, frame: 10, spareBalls: 0, strikeBalls: 0, turn: 2)
+        game = Game.create(game_params)
     end
 
     def update 
+        byebug
         game = Game.find(params[:id])
         render json: game
     end 
     
     def game_params
-        params.require(:game).permit(:pins, :score, :frame, :spareBalls, :strikeBalls, :turn)
+        params.require(:game).permit(:pins, :score, :frame, :spareBalls, :strikeBalls, :turn, :game_over)
     end
 end
