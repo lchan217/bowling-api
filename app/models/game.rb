@@ -1,7 +1,7 @@
 class Game < ApplicationRecord
     include GameConcern
 
-    def regular_round(game, pinsKnockedDown)
+    def score_points(game, pinsKnockedDown)
         startingFrame = game.frame
 
         #strike? 
@@ -11,7 +11,6 @@ class Game < ApplicationRecord
             previous_strike(game)
             game.frame += 1 
             game.strikeBalls += 2
-    
             game.save
             exit
         end
