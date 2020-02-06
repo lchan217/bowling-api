@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 2020_02_05_030249) do
     t.integer "score"
     t.json "score_hash", default: {}
     t.integer "turn"
-    t.boolean "turn_2", default: true
     t.integer "spareBalls"
     t.integer "strikeBalls"
     t.boolean "game_over", default: false

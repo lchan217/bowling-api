@@ -16,6 +16,6 @@ class GameController < ApplicationController
     end 
     
     def game_params
-        params.require(:game).permit(:pins, :score, :frame, :spareBalls, :strikeBalls, :turn, :turn_2, :game_over, :score_hash)
+        params.require(:game).permit(:pins, :score, :frame, :spareBalls, :strikeBalls, :turn, :game_over, :score_hash)
     end
 end
