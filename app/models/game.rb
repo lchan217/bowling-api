@@ -7,6 +7,8 @@ class Game < ApplicationRecord
         #strike? 
         if game.turn === 2 && pinsKnockedDown === 10 
             game.score_hash[game.frame] ? game.score_hash[game.frame] += 10 :  game.score_hash[game.frame] = 10
+            game.score = pinsKnockedDown
+            previous_strike(game)
             game.frame += 1 
             game.strikeBalls += 2
     
@@ -21,7 +23,7 @@ class Game < ApplicationRecord
             game.score = pinsKnockedDown
             game.turn = 1 
             game.score_hash[game.frame.to_s] ? game.score_hash[game.frame.to_s] += pinsKnockedDown :  game.score_hash[game.frame.to_s] = pinsKnockedDown
-
+            
             previous_strike(game)
             previous_spare(game)
 
