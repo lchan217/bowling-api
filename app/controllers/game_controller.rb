@@ -11,9 +11,7 @@ class GameController < ApplicationController
     def update 
         game = Game.last
         pinsKnockedDown = params[:numPins]
-        turn = params[:turn]
-        game.regular_round_turn_1(game, pinsKnockedDown, turn) 
-        game.regular_round_turn_2(game, pinsKnockedDown, turn)
+        game.regular_round(game, pinsKnockedDown) 
         render json: game
     end 
     
