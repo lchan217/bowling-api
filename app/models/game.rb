@@ -16,7 +16,8 @@ class Game < ApplicationRecord
             game.score_hash[game.frame] ? game.score_hash[game.frame] += 10 :  game.score_hash[game.frame] = 10
             game.frame += 1 
             game.strikeBalls += 2
-            game.save 
+            game.save
+            exit
         end
 
         #normal first round? 
@@ -27,6 +28,7 @@ class Game < ApplicationRecord
             game.turn = 1 
             game.score_hash[game.frame.to_s] ? game.score_hash[game.frame.to_s] += pinsKnockedDown :  game.score_hash[game.frame.to_s] = pinsKnockedDown
             game.save
+            exit
         end 
         
         #spare? 
@@ -37,6 +39,7 @@ class Game < ApplicationRecord
             game.pins = 10 
             game.spareBalls += 1
             game.save
+            exit
         end 
    
     end
