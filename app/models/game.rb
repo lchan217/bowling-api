@@ -36,7 +36,6 @@ class Game < ApplicationRecord
 
              #end of game (spare)
              if game.frame === 10
-                game.score_hash[game.frame.to_s] ? game.score_hash[game.frame.to_s] += pinsKnockedDown :  game.score_hash[game.frame.to_s] = pinsKnockedDown           
                 game.spareBalls += 1
                 game.pins = 10 
                 game.save

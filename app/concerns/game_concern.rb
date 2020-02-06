@@ -4,9 +4,11 @@ module GameConcern
             if game.spareBalls > 0 
                 game.spareBalls -= 1
                 previousFrame = game.frame - 1
-                game.score_hash[previousFrame.to_s] += game.score
+                if game.frame != 10 
+                    game.score_hash[previousFrame.to_s] += game.score
+                end
+                #scored a spare in the last round?
                 if game.frame === 10
-                    game.score_hash["10"] += game.score
                     game.game_over = true 
                     game.save
                     exit
