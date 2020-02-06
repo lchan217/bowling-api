@@ -27,6 +27,16 @@ class Game < ApplicationRecord
             game.score = pinsKnockedDown
             game.turn = 1 
             game.score_hash[game.frame.to_s] ? game.score_hash[game.frame.to_s] += pinsKnockedDown :  game.score_hash[game.frame.to_s] = pinsKnockedDown
+            
+            #previous round spare?
+            if game.spareBalls > 0 
+                game.spareBalls -= 1
+                previousFrame = game.frame - 1
+                game.score_hash[previousFrame.to_s] += game.score
+            end
+            
+            # previous round strike?
+
             game.save
             exit
         end 
@@ -41,6 +51,6 @@ class Game < ApplicationRecord
             game.save
             exit
         end 
-   
     end
+
 end 
