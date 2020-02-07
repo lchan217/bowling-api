@@ -9,6 +9,7 @@ module GameConcern
                 end
                 #scored a spare in the final round?
                 if game.frame === 10
+                    calculate_total(game)
                     game.game_over = true 
                     game.save
                     exit
@@ -25,6 +26,8 @@ module GameConcern
 
             #scored a strike in the final round?
             if game.frame === 11 && game.strikeBalls === 0
+                calculate_total(game)
+                game.total_score -= game.score_hash[game.frame.to_s]
                 game.game_over = true 
                 game.save
                 exit
@@ -42,6 +45,9 @@ module GameConcern
             total = 0 
             game.score_hash.each do |frame, score|
                 total += score
+            end
+            if game.frame === 11 && game.strikeBalls === 1 
+                total -= game.score_hash[game.frame.to_s]
             end
             game.total_score = total
         end
