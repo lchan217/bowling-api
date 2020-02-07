@@ -7,7 +7,7 @@ module GameConcern
                 if game.frame != 10 
                     game.score_hash[previousFrame.to_s] += game.score
                 end
-                #scored a spare in the last round?
+                #scored a spare in the final round?
                 if game.frame === 10
                     game.game_over = true 
                     game.save
@@ -20,10 +20,10 @@ module GameConcern
             previouspreviousFrame = previousFrame - 1
             if game.strikeBalls > 0 
                 game.strikeBalls -= 1
-                game.score_hash[previousFrame.to_s] += game.score
+                game.score_hash[previousFrame.to_s] += game.score 
             end
 
-            #scored a strike in the last round?
+            #scored a strike in the final round?
             if game.frame === 11 && game.strikeBalls === 0
                 game.game_over = true 
                 game.save
@@ -33,7 +33,7 @@ module GameConcern
           
 
             #2 strikes in a row
-            if game.score_hash[previouspreviousFrame.to_s] === 20 
+            if game.score_hash[previouspreviousFrame.to_s] === 20 && spareBalls == 0 && game.turn === 2
                 game.score_hash[previouspreviousFrame.to_s] += game.score
                 game.strikeBalls = 1
             end
