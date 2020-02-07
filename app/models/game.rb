@@ -11,6 +11,7 @@ class Game < ApplicationRecord
             previous_strike(game)
             game.frame += 1 
             game.strikeBalls += 2
+            game.calculate_total(game)
             game.save
             exit
         end
@@ -25,7 +26,7 @@ class Game < ApplicationRecord
             
             previous_strike(game)
             previous_spare(game)
-
+            game.calculate_total(game)
             game.save
             exit
         end 
@@ -39,13 +40,15 @@ class Game < ApplicationRecord
              if game.frame === 10
                 game.spareBalls += 1
                 game.pins = 10 
+                game.calculate_total(game)
                 game.save
                 exit
             end
-
+            previous_strike(game)
             game.frame += 1
             game.pins = 10 
             game.spareBalls += 1
+            game.calculate_total(game)
             game.save
             exit
             
@@ -63,6 +66,7 @@ class Game < ApplicationRecord
                 game.score = pinsKnockedDown
                 game.score_hash[game.frame.to_s] ? game.score_hash[game.frame.to_s] += pinsKnockedDown :  game.score_hash[game.frame.to_s] = pinsKnockedDown           
                 game.game_over = true
+                game.calculate_total(game)
                 game.save
                 exit
             end
@@ -70,6 +74,7 @@ class Game < ApplicationRecord
             game.frame += 1
             game.turn = 2 
             game.pins = 10 
+            game.calculate_total(game)
             game.save
             exit
         end

@@ -38,6 +38,12 @@ module GameConcern
                 game.strikeBalls = 1
             end
         end
-
+        def calculate_total(game)
+            total = 0 
+            game.score_hash.each do |frame, score|
+                total += score
+            end
+            game.total_score = total
+        end
        
   end
