@@ -47,6 +47,7 @@ class Game < ApplicationRecord
                 exit
             end
             previous_strike(game)
+            previous_spare(game)
             game.frame += 1
             game.pins = 10 
             game.spareBalls += 1

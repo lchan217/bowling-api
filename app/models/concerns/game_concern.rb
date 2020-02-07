@@ -11,18 +11,24 @@ module GameConcern
         end
         def previous_strike(game)
             previousFrame = game.frame - 1
-            previouspreviousFrame = previousFrame - 1
+            previouspreviousFrame = game.frame - 2
+
+            #more than 1 strike in a row
+            if game.strikeBalls >= 3 
+                game.score_hash[previouspreviousFrame.to_s] += game.score 
+            end
+
             if game.strikeBalls > 0 
                 game.strikeBalls -= 1
                 game.score_hash[previousFrame.to_s] += game.score 
-            end
 
-            #2 strikes in a row
-            if game.score_hash[previouspreviousFrame.to_s] === 20 && spareBalls == 0 && game.turn === 2 && game.score_hash[game.frame.to_s] != 10
-                game.score_hash[previouspreviousFrame.to_s] += game.score
-                game.strikeBalls = 1
-            end
+                #to not doublecount score if scored spare and strike in previous rounds
+                if game.spareBalls > 0 
+                    game.score_hash[previousFrame.to_s] -= game.score 
+                end 
+            end            
         end
+
         def calculate_total(game)
             total = 0 
             #regular round
@@ -50,7 +56,6 @@ module GameConcern
                 game.save
                 exit
             end 
-
             game.total_score = total
         end
        
