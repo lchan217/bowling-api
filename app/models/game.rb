@@ -63,14 +63,6 @@ class Game < ApplicationRecord
             game.score_hash[game.frame.to_s] ? game.score_hash[game.frame.to_s] += pinsKnockedDown :  game.score_hash[game.frame.to_s] = pinsKnockedDown           
             previous_strike(game)
             previous_spare(game)
-             
-            #end of game (regular)
-            if game.frame === 10 && game.spareBalls === 0 && game.strikeBalls === 0 && pinsKnockedDown + game.score != 10
-                game.calculate_total(game)
-                game.game_over = true
-                game.save
-                exit
-            end
 
             game.frame += 1
             game.turn = 2 

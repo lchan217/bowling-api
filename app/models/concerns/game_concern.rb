@@ -55,6 +55,14 @@ module GameConcern
                 game.save
                 exit
             end
+
+            #end of game (regular)
+            if game.frame === 11 && game.spareBalls === 0 && game.strikeBalls === 0
+                game.total_score += game.score
+                game.game_over = true
+                game.save
+                exit
+            end
             game.total_score = total
         end
        
